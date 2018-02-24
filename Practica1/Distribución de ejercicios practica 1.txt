@@ -1,0 +1,31 @@
+	Ejercicios Practica 1				
+	Requisitos:				
+	1. Todos los códigos deben de ir comentados, con un ejemplo para usarlos.				
+	2. Los nombres de las variables deben de ser intuitivos, no colocar variables como a, b o c. El nombre debe explicar solo la variable.				
+	3. Hay bonificación de 0.5 por utilizar control de versiones adecuadamente. Haciendo un commit cada vez que piense que es necesario (Se sugiere hacer commit cada vez que se termina un ejercicio). 				
+					
+#	Cédula	Nombre	Email	Ejercicios	Problemas
+1	1007653256	BLANCO AMAYA OSCAR FABIANO	oscar.blanco@udea.edu.co	3 7 11 15 19 23 27	1 5 9 13
+2	1018457099	CARRILLO SANTANA JHORMAN PAUL	jhorman.carrillo@udea.edu.co	4 8 12 16 20 24 28	2 6 10 14
+3	1007675766	CUAVAS ARROYO ELI JOSE	eli.cuavas@udea.edu.co	5 7 13 17 21 25 29	3 7 11 15
+4	1214739218	GAITÁN ESCUDERO JORGE ELIÉCER	eliecer.gaitan@udea.edu.co	6 8 14 18 22 26 30	4 8 12 16
+5	1007431673	GARCÉS MONTERO MARÍA SALOMÉ	msalome.garces@udea.edu.co	3 7 11 15 19 23 27	1 5 9 13
+6	1063305491	GONZALEZ BOLAÑOS YONATAN ANDRES	yonatan.gonzalez@udea.edu.co	4 8 12 16 20 24 28	2 6 10 14
+7	1033655632	HERNÁNDEZ RUIZ CAMILO	camilo.hernandez1@udea.edu.co	5 7 13 17 21 25 29	3 7 11 15
+8	1152706734	HERNÁNDEZ VALENCIA JUAN JOSÉ	juan.hernandez33@udea.edu.co	6 8 14 18 22 26 30	4 8 12 16
+9	1127617499	MANTILLA RAMOS YORGUIN JOSE	yorguinj.mantilla@udea.edu.co	3 7 11 15 19 23 27	1 5 9 13
+10	1037669476	MARTINEZ ZAPATA KEVIN DAVID	kevin.martinez1@udea.edu.co	4 8 12 16 20 24 28	2 6 10 14
+11	1037672299	MONTOYA LONDOÑO SANTIAGO	santiago.montoya15@udea.edu.co	5 7 13 17 21 25 29	3 7 11 15
+12	99090603287	MOSQUERA SILVA DANIEL	daniel.mosqueras@udea.edu.co	6 8 14 18 22 26 30	4 8 12 16
+13	1085663874	MUTIS MUÑOZ DIEGO ANDRES	diego.mutis@udea.edu.co	3 7 11 15 19 23 27	1 5 9 13
+14	99100704249	NARVÁEZ TORO SANTIAGO	santiago.narvaezt@udea.edu.co	4 8 12 16 20 24 28	2 6 10 14
+15	1004214061	ORBES CABRERA CAMILO	camilo.orbes@udea.edu.co	5 7 13 17 21 25 29	3 7 11 15
+16	1007291052	OSORIO JIMENEZ DIEGO ALEJANDRO	diego.osorio2@udea.edu.co	6 8 14 18 22 26 30	4 8 12 16
+17	1061817922	RODRIGUEZ ORDOÑEZ ESTEBAN	esteban.rodriguezo@udea.edu.co	3 7 11 15 19 23 27	1 5 9 13
+18	1020489890	RUA GUTIÉRREZ CARLOS DANIEL	cdaniel.rua1@udea.edu.co	4 8 12 16 20 24 28	2 6 10 14
+19	1152716486	SEPULVEDA RENDON LUIS ALBERTO	luis.sepulveda1@udea.edu.co	5 7 13 17 21 25 29	3 7 11 15
+20	1026160681	SERNA CASTANEDA JOSE ALEJANDRO	josea.serna@udea.edu.co	6 8 14 18 22 26 30	4 8 12 16
+21	1100972730	SILVA PORRAS BRAYAN CAMILO	brayan.silva@udea.edu.co	3 7 11 15 19 23 27	1 5 9 13
+22	1007523573	TALAIGUA FLOREZ BRIANDY PAOLA	briandy.talaigua@udea.edu.co	4 8 12 16 20 24 28	2 6 10 14
+23	99112502161	URREA FRANCO JORGE ANDRES	andres.urrea@udea.edu.co	5 7 13 17 21 25 29	3 7 11 15
+24	1115082700	VIDAL BOHORQUEZ VIVIANA CAROLINA	viviana.vidal@udea.edu.co	6 8 14 18 22 26 30	4 8 12 16
