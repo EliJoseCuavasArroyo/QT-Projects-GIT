@@ -7,7 +7,8 @@ int main()
  * El programa entrega la suma de los numeros en la diagonal de la mariz nxn espiral.
  */
 {
-    int range, sum=1, criterion=0, num=1;/*
+    int range, sum=1, criterion=0, num=1;
+        /*
          -En la variable sum, mantendremos la suma de los números de la matriz diagonal.
          -La variable criterion es el criterio de aumento por el cual tomará cada número.
          -La variable num son los números que cumplen el criterio de aumento y deben agregarse.
