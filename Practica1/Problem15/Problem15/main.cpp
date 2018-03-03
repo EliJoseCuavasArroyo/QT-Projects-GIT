@@ -2,9 +2,10 @@
 
 using namespace std;
 
+void matriz(int);// Funcion que imprime la matriz nxn.
 int main()
 /* El programa recibe un numero positivo y entero.
- * El programa entrega la suma de los numeros en la diagonal de la mariz nxn espiral.
+ * El programa entrega la suma de los numeros en la diagonal de la matriz nxn espiral.
  */
 {
     int range, sum=1, criterion=0, num=1;
@@ -24,6 +25,48 @@ int main()
             sum = sum+num; // Acumulamos el numero en la variable sum.
         }
     }
+    cout << endl;
+    matriz(range); // Mostramos la matriz en la terminal.
+    cout << endl;
     cout << "La suma de los numeros en la diagonal de la matriz es: " << sum << endl;
     return 0;
+}
+void matriz(int n){
+    int matrix[n][n];
+    int x=(0),y=(n-1), r=(n*n), actualy=(n), actualx =(0);
+    while (r > 0){
+    for (int i=y;i>=x;i--){
+        matrix[x][i] = r;
+        r--;
+        actualy--;
+        if (r < 0) break;
+    }
+    for (int i=(x+1);i<=y;i++){
+        matrix[i][actualy] = r;
+        r--;
+        actualx++;
+        if (r < 0) break;
+    }
+    for (int i=(actualy+1);i<y;i++){
+        matrix[actualx][i] = r;
+        r--;
+        if (r < 0) break;
+    }
+    for (int i=actualx;i>(x);i--){
+        matrix[i][y] = r;
+        r--;
+        if (r < 0) break;
+    }
+    y--;
+    x++;
+    actualy = y+1;
+    actualx = x;
+}
+    for (int i=0;i<n;i++){
+        for (int j=0;j<n;j++){
+            if (((matrix[i][j])/10) == 0) cout << matrix[i][j] << "   ";
+            else cout << matrix[i][j] << "  ";
+        }
+    cout << endl;
+    }
 }
