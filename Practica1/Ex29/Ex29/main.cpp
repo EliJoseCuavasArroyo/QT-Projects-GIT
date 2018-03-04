@@ -43,7 +43,7 @@ while (2>1)
     else if (obtion == 60) limitmenor = numguess+1;// Si el simbolo ingresado es '<', significa que " numguess < num ", entonces actualizamos el limite inferior.
     else if (obtion == 61) break; // Si el simbolo ingresado es '=', significa que el programa adivino el numero.
     else cout << "Obcion invalida, intente de nuevo" << endl;
-    numguess = rand() % (limitmayor-limitmenor+1) + limitmenor; // Tomamos un numevo numero deacuerdo al los nuevos rangos establecidos.
+    numguess = rand() % (limitmayor-limitmenor+1) + limitmenor; // Tomamos un nuevo numero deacuerdo al los nuevos rangos establecidos.
     }
 
 }
