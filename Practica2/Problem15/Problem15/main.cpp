@@ -10,16 +10,21 @@ void basicinterseccion2(int*, int*, int*, int, int);
 void basicinterseccion3(int*, int*, int*, int, int);
 void basicinterseccion4(int*, int*, int*, int, int);
 
+// La siguente funcion muestra la interseccion si es que existe.
+
+void see(int*);
+
 int main()
 {
     // Inicializamos los arreglos donde guardaremos los datos de los dos cuadrados.
 
-    int cuadrado1[4];
+    int cuadrado1[4]; // Cuadrado 1.
     int cuadrado1copy[4]; // Copia del cuadrado 1
-    int cuadrado2[4];
+    int cuadrado2[4]; // Cuadrado 2.
     int interseccion[4]; // Variable donde guardaremos los datos de la interseccion.
     bool imaginebreaker = false; // Condicion para el ciclo de intersecciones basicas.
-    bool condition = false;
+    bool condition = false; // Condicion para cambiar los cuadrados, si que uno se intersecta pero el otro no.
+    bool failed; // Variable donde guardamos si la interseccion basica fallo.
 
     // Datos del cuadrado 1.
 
@@ -79,21 +84,25 @@ int main()
         if (search(cuadrado1,cuadrado2[0],cuadrado2[1]) == true) //#1
         {
             basicinterseccion1(interseccion, cuadrado1, cuadrado2, cuadrado2[0], cuadrado2[1]);
+            failed = false; // Funciono la interseccion basica.
             break;
         }
         else if (search(cuadrado1,(cuadrado2[0]+cuadrado2[2]),cuadrado2[1]) == true) //#2
         {
             basicinterseccion2(interseccion, cuadrado1, cuadrado2, (cuadrado2[0]+cuadrado2[2]), cuadrado2[1]);
+            failed = false; // Funciono la interseccion basica.
             break;
         }
         else if (search(cuadrado1,cuadrado2[0],(cuadrado2[1]-cuadrado2[3])) == true) //#3
         {
             basicinterseccion3(interseccion, cuadrado1, cuadrado2, cuadrado2[0], (cuadrado2[1]-cuadrado2[3]));
+            failed = false; // Funciono la interseccion basica.
             break;
         }
         else if (search(cuadrado1,(cuadrado2[0]+cuadrado2[2]),(cuadrado2[1]-cuadrado2[3])) == true) //#4
         {
             basicinterseccion4(interseccion, cuadrado1, cuadrado2, (cuadrado2[0]+cuadrado2[2]), (cuadrado2[1]-cuadrado2[3]));
+            failed = false; // Funciono la interseccion basica.
             break;
         }
         else
@@ -101,20 +110,57 @@ int main()
             condition = true; // Cambiemos los cuadrados.
         }
 
-        if (imaginebreaker == true) break; // Terminamos el ciclo en el caso de que interseccion basica no funciona.
-
+        if (imaginebreaker == true){
+            failed = true; // No funciono la interseccion basica
+            break; // Terminamos el ciclo en el caso de que interseccion basica no funciona.
+        }
     }
 
 
+    if (failed == true) // Si la interseccion basica fallo, procedemos a ver si existe na interseccion sintetica.
+    {
+        if (cuadrado1[1] > cuadrado2[1]){
+            for (int i = 0; i<cuadrado1[3]; i++){
+                if (search(cuadrado2, cuadrado1[0], (cuadrado1[1]-i)) == true) // Existe una division sintetica
+                {
+                basicinterseccion1(interseccion, cuadrado1, cuadrado2, cuadrado1[0], (cuadrado1[1]-i)); // Entonces al punto sintetico le hacemos una interseccion basica.
+                see(interseccion); // Mostramos la interseccion.
+                failed = false; // Funciono la interseccion sintetica.
+                break;
+                }
+            }
+        }
+        else{
+            for (int i = 0; i<cuadrado2[3]; i++){
+                if (search(cuadrado1, cuadrado2[0], (cuadrado2[1]-i)) == true) // Existe una division sintetica
+                    {
+                    basicinterseccion1(interseccion, cuadrado1, cuadrado2, cuadrado2[0], (cuadrado2[1]-i)); // Entonces al punto sintetico le hacemos una interseccion basica.
+                    see(interseccion); // Mostramos la interseccion.
+                    failed = false; // Funciono la interseccion sintetica.
+                    break;
+                    }
+                }
 
-    // Mostramos en la terminal la solucion.
+            }
+    }
+    else
+    {
+        see(interseccion); // Mostramos la interseccion, ya que si existio.
+    }
+
+    if (failed == true) cout << "No hay interseccion" << endl;
+
+return 0;
+
+}
+void see(int *interseccion){
 
     cout << "(";
     for(int i=0;i<3;i++){
         cout << interseccion[i] << ", ";
     }
     cout << interseccion[3] << ")" << endl;
-    return 0;
+
 }
 bool search(int *cuadrado, int pointx, int pointy){
     for(int i=0;i<=cuadrado[3];i++) // Recorremos a lo largo.
