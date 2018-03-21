@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-#define limit 50 // Establecemos un limite para el ingreso de un caracter.
+#define limit 50 // Establecemos un limite para el ingreso de una cadena de caracteres.
 
 int strlen(char*); // Esta funcion se encarga de entregar la cantidad de palabras que tiene un caracter.
 
@@ -22,6 +22,7 @@ int main()
     cout << " Si no lo son, el programa dice que no lo son" << endl;
     cout << " Debe tener en cuenta que el programa tiene en cuenta que existe diferencia entre las mayusculas y las minusculas" << endl;
     cout << endl;
+
     // Definimos dos cadenas de caracteres con sus respectivos limites.
 
     char str1[limit];
@@ -31,7 +32,7 @@ int main()
     cout << "Ingrese el segundo caracter: ";
     cin >> str2;
 
-    if (strlen(str1) == strlen(str2)) // Si no tienen la misma lingitud, evidentemente no son iguales.
+    if (strlen(str1) == strlen(str2)) // Si no tienen la misma longitud, evidentemente no son iguales.
         {
         if (same(str1, str2) == true) cout << "Son iguales" << endl;
         else cout << "No son iguales" << endl;
@@ -49,11 +50,11 @@ int strlen(char *word) // Recibe una cadena de caracteres.
     }
 return count; // Entrega la cantidad de caracteres que tiene dicha cadena.
 }
-bool same(char *word1, char *word2) // Recive las dos cadenas de caracteres
+bool same(char *word1, char *word2) // Recibe las dos cadenas de caracteres
 {
 int len = strlen(word1); // Las dos cadenas de caracteres cumplen con la condicion de tener la misma cantidad de caracteres.
 for (int i=0;i<len;i++){
-    if (word1[i] != word2[i]) return false; // Si alguno de sus caracteres en su misma posicion no son iguales, quiere decir que las cadenas son deiferentes.
+    if (word1[i] != word2[i]) return false; // Si alguno de sus caracteres en su misma posicion no son iguales, quiere decir que las cadenas son diferentes.
     }
-return true; // Si todos sus caracteres son iguales, quiere las dos cadenas son iguales.
+return true; // Si todos sus caracteres son iguales, quiere decir que las dos cadenas son iguales.
 }

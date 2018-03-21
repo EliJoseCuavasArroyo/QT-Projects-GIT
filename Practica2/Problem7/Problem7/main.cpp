@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-#define limit 50 // Establecemos un limite para el ingreso de un caracter.
+#define limit 50 // Establecemos un limite para el ingreso de una cadena de caracteres.
 
 int strlen(char*); // Esta funcion se encarga de entregar la cantidad de palabras que tiene un caracter.
 
@@ -24,7 +24,7 @@ int main()
         {
             strcopy[count] = str[i]; // Actualizamos strcopy.
             count = count+1; // Seguimos con la siguiente posicion.
-            cout << str[i]; // Lo imprimimos ya que no esta repetido hasta en momento
+            cout << str[i]; // Lo imprimimos ya que no esta repetido hasta el momento.
         }
     }
     cout << endl;
