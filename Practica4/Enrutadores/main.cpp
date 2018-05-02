@@ -1,7 +1,3 @@
-
-// Se cargan las librerias necesarias.
-
-// Incluimos el objeto enrutador:
 #include "enrutador.h"
 #include <iostream>
 #include <string>
@@ -16,6 +12,7 @@ using namespace std;
 typedef map<string, string> Dic_str; // Definimos una variable diccionario que en strings guarda strings.
 typedef map<string, int> Dic_str_To_int; // Definimos una variable diccionario que en strings guarada enteros.
 typedef list<enrutador> List_ruter; // Definimos una variable la cual es una lista de enrutadores
+typedef list<int> List_ruter_int;
 
 bool SearchDicc(string word, Dic_str_To_int dicc); // Busca una Key tipo string en una diccionario tipo Dic_str_To_int.
 void Create_Table_cost_and_direction_ruter(enrutador *ruter, List_ruter ruters); // Crea a tabla de enrutamiento de un enrutador (con sus direcciones) y la guarada en el mismo.
@@ -27,8 +24,18 @@ void imprimirS(Dic_str dicc);
 
 int main(){
 
+    int num;
+    int cost;
+
+    string word;
+    enrutador ruter_copy;
+
     enrutador enrutadres[limit];
-    List_ruter list_ruter;
+    List_ruter list_ruter_in_use;
+    List_ruter_int ruters_in_use;
+    List_ruter_int ruters_aviable;
+
+    List_ruter_int::iterator Iter_ruters; // iterador para la lista de enrutadores.
 
     char obtion;
     cout << "Bienvenido a la red de enrutadores" << endl;
@@ -37,42 +44,154 @@ int main(){
     cout << endl;
     cout << "Cargar una red de enrutadores por defecto (A)" << endl;
     cout << endl;
-    cout << "Cargar una red de enrutadores aleatorias (B)" << endl;
+    cout << "Cargar una red de enrutadores de un archivo (B)" << endl;
+    cout << endl;
+    cout << "Cargar una red de enrutadores aleatorias (C)" << endl;
     cout << endl;
     cout << "Cual elige: ";
     cin >> obtion;
 
-    if (obtion == char(65)){
+    while (2>1)
+    {
+        if (obtion == char(65)){
 
-        enrutadres[0].setName("ruterA");
-        enrutadres[1].setName("ruterB");
-        enrutadres[2].setName("ruterC");
-        enrutadres[3].setName("ruterD");
+            enrutadres[0].setName("ruterA");
+            enrutadres[1].setName("ruterB");
+            enrutadres[2].setName("ruterC");
+            enrutadres[3].setName("ruterD");
 
-        Conection_cost_ruters(&enrutadres[0], &enrutadres[1], 4);
-        Conection_cost_ruters(&enrutadres[1], &enrutadres[3], 1);
-        Conection_cost_ruters(&enrutadres[0], &enrutadres[2], 10);
-        Conection_cost_ruters(&enrutadres[2], &enrutadres[3], 2);
+            Conection_cost_ruters(&enrutadres[0], &enrutadres[1], 4);
+            Conection_cost_ruters(&enrutadres[1], &enrutadres[3], 1);
+            Conection_cost_ruters(&enrutadres[0], &enrutadres[2], 10);
+            Conection_cost_ruters(&enrutadres[2], &enrutadres[3], 2);
 
-        list_ruter.push_back(enrutadres[0]);
-        list_ruter.push_back(enrutadres[1]);
-        list_ruter.push_back(enrutadres[2]);
-        list_ruter.push_back(enrutadres[3]);
+            list_ruter_in_use.push_back(enrutadres[0]);
+            list_ruter_in_use.push_back(enrutadres[1]);
+            list_ruter_in_use.push_back(enrutadres[2]);
+            list_ruter_in_use.push_back(enrutadres[3]);
+
+            for(int i=0;i<4;i++){
+                ruters_in_use.push_back(i);
+            }
+            for(int i=4;i<51;i++){
+                ruters_aviable.push_back(i);
+            }
+
+            break;
+        }
+        else if (obtion == char(66)){
+
+        }
+        else if (obtion == char(67)){
+
+        }
+        else{
+         cout << "Error, obcion no definida" << endl;
+        }
 
     }
-    else if (obtion == char(65)){
+
+    cout << endl;
+    cout << "La red de enrutadores ya esta cargada" << endl;
+
+    while (2>1)
+    {
+        cout << endl;
+        cout << "Tiene las siguientes obciones:" << endl;
+        cout << endl;
+        cout << "Agregar enrutador (A)" << endl;
+        cout << endl;
+        cout << "Remover enrutador (B)" << endl;
+        cout << endl;
+        cout << "Desea saber cuanto cuesta enviar un paquete desde un enrutador origen a uno destino (Con su direccion incluida) (C)" << endl;
+        cout << endl;
+        cout << "Salir (D)" << endl;
+        cout << endl;
+        cout << "Cual elige: ";
+        cin >> obtion;
+        cout << endl;
+
+        if (obtion == char(65)) // A
+        {
+            cout << "Ingrese el nombre del nuevo enrutador: ";
+            cin.ignore();
+            getline(cin, word);
+            cout << endl;
+
+            Iter_ruters = ruters_aviable.begin();
+            num = *Iter_ruters;
+
+            enrutadres[num].setName(word); // Le ponemos nombre.
+            ruters_in_use.push_back(num); // Lo agragamos a la lista de los que estan en uso.
+            Iter_ruters = ruters_aviable.erase(Iter_ruters); // Borramos de las lista de los disponibles, ya que no esta disponible.
+
+            while (2>1){
+                cout << "Desea hacer una conexcion (S/N): ";
+                cin >> obtion;
+                if (obtion == char(83)) // SI
+                {
+                    cout << "Ingrese el nombre del enrutador con el cual va a conectar: ";
+                    cin.ignore();
+                    getline(cin, word);
+                    cout << word << endl;
+                    Iter_ruters = ruters_in_use.begin();
+                    while(Iter_ruters != ruters_in_use.end()){
+                         if (word == enrutadres[*Iter_ruters].getName()) break;
+                          Iter_ruters ++;
+                    }
+                    cout << "Ingrese el costo: ";
+                    cin >> cost;
+                    Conection_cost_ruters(&enrutadres[num], &enrutadres[*Iter_ruters], cost);
+                }
+                else if (obtion == char(78)) // NO
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Obcion no definida" << endl;
+                }
+
+            }
+
+            // Actualizamos la lista de los enrutadores en uso.
+
+            list_ruter_in_use.clear();
+            Iter_ruters = ruters_in_use.begin();
+            while(Iter_ruters != ruters_in_use.end()){
+                list_ruter_in_use.push_back(enrutadres[*Iter_ruters]);
+                Iter_ruters ++;
+            }
+        }
+        else if (obtion == char(66)) // B
+        {
+
+        }
+        else if (obtion == char(67)) // C
+        {
+            cout << "Ingrese el nombre del enrutador: ";
+            cin.ignore();
+            getline(cin, word);
+            cout << endl;
+            Iter_ruters = ruters_in_use.begin();
+            while(Iter_ruters != ruters_in_use.end()){
+                 if (word == enrutadres[*Iter_ruters].getName()) break;
+                  Iter_ruters ++;
+            }
+            Create_Table_cost_and_direction_ruter(&enrutadres[*Iter_ruters], list_ruter_in_use);
+            imprimir(enrutadres[*Iter_ruters].getTable_cost_ruter());
+            cout << endl;
+            imprimirS(enrutadres[*Iter_ruters].getTable_direction_ruter());
+        }
+        else if (obtion == char(68)) // D
+        {
+            break;
+        }
+        else{
+            cout << "Error, obcion no definida" << endl;
+        }
 
     }
-    else{
-     cout << "Error, obcion no definida" << endl;
-    }
-
-    Create_Table_cost_and_direction_ruter(&enrutadres[0], list_ruter);
-
-    imprimir(enrutadres[0].getTable_cost_ruter());
-    imprimirS(enrutadres[0].getTable_direction_ruter());
-
-    return 0;
 }
 
 bool SearchDicc(string word, Dic_str_To_int dicc){
