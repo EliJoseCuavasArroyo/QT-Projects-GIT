@@ -19,8 +19,8 @@ void Create_Table_cost_and_direction_ruter(enrutador *ruter, List_ruter ruters);
 void Conection_cost_ruters(enrutador *ruter1, enrutador *ruter2, int cost);// Define la conexcion entre dos enrutadores.
 void Delete_cost_ruters(enrutador *ruter1, enrutador *ruter2); // Borra la conexcion entre dos enrutadores.
 
-void imprimir(Dic_str_To_int dicc);
-void imprimirS(Dic_str dicc);
+void Print(Dic_str_To_int dicc);
+void PrintS(Dic_str dicc);
 
 int main(){
 
@@ -29,6 +29,7 @@ int main(){
 
     string word;
     enrutador ruter_copy;
+    Dic_str_To_int  operation;
 
     enrutador enrutadres[limit];
     List_ruter list_ruter_in_use;
@@ -36,6 +37,7 @@ int main(){
     List_ruter_int ruters_aviable;
 
     List_ruter_int::iterator Iter_ruters; // iterador para la lista de enrutadores.
+    Dic_str_To_int::iterator Iter_table_ruter; // iterador para el diccionario
 
     char obtion;
     cout << "Bienvenido a la red de enrutadores" << endl;
@@ -165,7 +167,45 @@ int main(){
         }
         else if (obtion == char(66)) // B
         {
+            cout << "Ingrese el nombre del enrutador a remover: ";
+            cin.ignore();
+            getline(cin, word);
+            cout << endl;
 
+            Iter_ruters = ruters_in_use.begin(); // Buscamos el enrutador el cual aun debe estar en uso.
+            while(Iter_ruters != ruters_in_use.end()){
+                 if (word == enrutadres[*Iter_ruters].getName()) break;
+                  Iter_ruters ++;
+            }
+
+            num = *Iter_ruters;
+            Iter_ruters = ruters_in_use.erase(Iter_ruters); // Lo eliminamos de la lista de enrutadores que estan en uso.
+            ruters_aviable.push_back(num); // Lo ponemos en la lista de los disponibles.
+
+            operation = enrutadres[num].getTable_cost(); // Buscamos sus conexciones.
+            Iter_table_ruter = operation.begin();
+
+            while (Iter_table_ruter != operation.end()) {
+                word = Iter_table_ruter->first; // Buscaremos atraves de su nombre.
+                Iter_ruters = ruters_in_use.begin(); // Buscamos el enrutador para hacer la desconexcion.
+                while(Iter_ruters != ruters_in_use.end()){
+                     if (word == enrutadres[*Iter_ruters].getName()){
+                         Delete_cost_ruters(&enrutadres[num], &enrutadres[*Iter_ruters]);
+                         break;
+                     }
+                      Iter_ruters ++;
+                }
+                Iter_table_ruter ++;
+            }
+
+            // Actualizamos la lista de los enrutadores en uso.
+
+            list_ruter_in_use.clear();
+            Iter_ruters = ruters_in_use.begin();
+            while(Iter_ruters != ruters_in_use.end()){
+                list_ruter_in_use.push_back(enrutadres[*Iter_ruters]);
+                Iter_ruters ++;
+            }
         }
         else if (obtion == char(67)) // C
         {
@@ -179,9 +219,9 @@ int main(){
                   Iter_ruters ++;
             }
             Create_Table_cost_and_direction_ruter(&enrutadres[*Iter_ruters], list_ruter_in_use);
-            imprimir(enrutadres[*Iter_ruters].getTable_cost_ruter());
+            Print(enrutadres[*Iter_ruters].getTable_cost_ruter());
             cout << endl;
-            imprimirS(enrutadres[*Iter_ruters].getTable_direction_ruter());
+            PrintS(enrutadres[*Iter_ruters].getTable_direction_ruter());
         }
         else if (obtion == char(68)) // D
         {
@@ -219,18 +259,18 @@ void Delete_cost_ruters(enrutador *ruter1, enrutador *ruter2){
     ruter2->Delete_setTable_cost(enrutador1);
 }
 
-void imprimir(Dic_str_To_int dicc){
+void Print(Dic_str_To_int dicc){
     Dic_str_To_int::iterator iter = dicc.begin();
     while(iter != dicc.end()){
-        cout << iter->first << "   " << iter->second << endl;
+        cout << iter->first << " :  " << iter->second << endl;
         iter++;
     }
 }
 
-void imprimirS(Dic_str dicc){
+void PrintS(Dic_str dicc){
     Dic_str::iterator iter = dicc.begin();
     while(iter != dicc.end()){
-        cout << iter->first << "   " << iter->second << endl;
+        cout << iter->first << " :  " << iter->second << endl;
         iter++;
     }
 }
@@ -281,9 +321,9 @@ void Create_Table_cost_and_direction_ruter(enrutador *ruter, List_ruter ruters){
         }
 
         Table_cost_ruter_official[less] = Table_cost_ruter_no_official[less]; // Lo grabamos en el diccionario oficial.
-        Table_direction_ruter_official[less] = Table_direction_ruter_no_official[less]; // Lo eliminamos del diccionario no oficial.
+        Table_direction_ruter_official[less] = Table_direction_ruter_no_official[less]; // Hacemos lo mismo con sus direcciones.
 
-        // Hacemos lo mismo con sus direcciones.
+        // Lo eliminamos del diccionario no oficial.
 
         Table_cost_ruter_no_official.erase(less);
         Table_direction_ruter_no_official.erase(less);
