@@ -5,6 +5,7 @@
 #include <list>
 #include <fstream>
 #include <exception>
+#include <time.h>
 
 // Definimos un limite para los enrutadores.
 #define limit 50
@@ -30,6 +31,7 @@ int elevate(int, int);
 
 int main(){
 
+    srand(time(NULL));
     int num;
     int cost;
 
@@ -100,7 +102,7 @@ int main(){
             List_str::iterator iter;
 
             List_str ruters_name; // Guardamos los enrutadores.
-            List_str ruters_nums; // Guardamos sus costo a cada enrutador respectivamente.
+            List_str ruters_nums; // Guardamos sus costo a cada enrutador respectivamente mas una posicion.
 
             cin.ignore();
             cout << "Ingrese el nomre del archivo de texto: ";
@@ -197,6 +199,59 @@ int main(){
         }
         else if (obtion == char(67)){
 
+            int aleatory_number1; // Para escoger enrutadores al azar.
+            int aleatory_number2;
+
+            int aleatory_cost; // Costo de ir de uno a otro al azar.
+            int n;
+
+            string name; // Nombres de los enrutadores.
+            string str;
+            char palabra;
+
+            n = rand()%27; // Escogemos una cantidad n de enrutadores a activar max 26.
+
+            for (int i=0;i<n;i++){
+                palabra = char(65+i);
+                str = palabra;
+                name = "ruter"+str;
+                enrutadres[i].setName(name); // Le ponemos nombre a los n enrutadores.
+                ruters_in_use.push_back(i); // Decimos que estos son los que estan en uso.
+            }
+
+            for (int i=n;i<limit;i++){
+                ruters_aviable.push_back(i); // Decimos cuales estan disponibles.
+            }
+
+            int p = 0;
+
+            while(p<20) // Procedemos a hacer exactamente 20 operaciones de conexcion entre los enrutadores.
+            {
+                aleatory_number1 = rand()%n; // Escogemos dos enrutadores al azar.
+                aleatory_number2 = rand()%n;
+                aleatory_cost = rand()%50; // Un costo al azar, max 49.
+                if (aleatory_number1 != aleatory_number2) // Los dos enrutadores no debenser iguales, por que seria como pornerso costo para ir a si mismo.
+                {
+                    Conection_cost_ruters(&enrutadres[aleatory_number1], &enrutadres[aleatory_number2], aleatory_cost);
+                    p++;
+                }
+            }
+
+            for (int i=0;i<n;i++){
+                cout << "Desde "<< enrutadres[i].getName() << " a: "<< endl;
+                Print(enrutadres[i].getTable_cost());
+            }
+
+            // Actualizamos la lista de los enrutadores en uso.
+
+            list_ruter_in_use.clear();
+            Iter_ruters = ruters_in_use.begin();
+            while(Iter_ruters != ruters_in_use.end()){
+                list_ruter_in_use.push_back(enrutadres[*Iter_ruters]);
+                Iter_ruters ++;
+            }
+
+            break;
         }
         else{
          cout << "Error, obcion no definida" << endl;
