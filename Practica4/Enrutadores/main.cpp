@@ -261,6 +261,10 @@ int main(){
 
     cout << endl;
     cout << "La red de enrutadores ya esta cargada" << endl;
+    cout << "Por favor, escribir bien el nombre de los enrutadores, en las operaciones siguientes" << endl;
+    cout << "Si, no el sistema buscara un enrutador que no existe" << endl;
+    cout << "ATT. Eli" << endl;
+    cout << endl;
 
     while (2>1)
     {
