@@ -1,0 +1,7 @@
+
+ENRUTADORES:
+          ruterA   ruterB    ruterC   ruterD
+ruterA       0         4        10        -
+ruterB       4         0        -         1
+ruterC       10        -        0         2
+ruterD       -         1        2         0

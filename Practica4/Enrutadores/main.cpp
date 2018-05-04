@@ -3,6 +3,8 @@
 #include <string>
 #include <map>
 #include <list>
+#include <fstream>
+#include <exception>
 
 // Definimos un limite para los enrutadores.
 #define limit 50
@@ -13,6 +15,7 @@ typedef map<string, string> Dic_str; // Definimos una variable diccionario que e
 typedef map<string, int> Dic_str_To_int; // Definimos una variable diccionario que en strings guarada enteros.
 typedef list<enrutador> List_ruter; // Definimos una variable la cual es una lista de enrutadores
 typedef list<int> List_ruter_int;
+typedef list<string> List_str;
 
 bool SearchDicc(string word, Dic_str_To_int dicc); // Busca una Key tipo string en una diccionario tipo Dic_str_To_int.
 void Create_Table_cost_and_direction_ruter(enrutador *ruter, List_ruter ruters); // Crea a tabla de enrutamiento de un enrutador (con sus direcciones) y la guarada en el mismo.
@@ -21,6 +24,9 @@ void Delete_cost_ruters(enrutador *ruter1, enrutador *ruter2); // Borra la conex
 
 void Print(Dic_str_To_int dicc);
 void PrintS(Dic_str dicc);
+
+int string_to_int (string num);
+int elevate(int, int);
 
 int main(){
 
@@ -50,11 +56,12 @@ int main(){
     cout << endl;
     cout << "Cargar una red de enrutadores aleatorias (C)" << endl;
     cout << endl;
-    cout << "Cual elige: ";
-    cin >> obtion;
 
     while (2>1)
     {
+        cout << "Cual elige: ";
+        cin >> obtion;
+
         if (obtion == char(65)){
 
             enrutadres[0].setName("ruterA");
@@ -75,13 +82,117 @@ int main(){
             for(int i=0;i<4;i++){
                 ruters_in_use.push_back(i);
             }
-            for(int i=4;i<51;i++){
+            for(int i=4;i<limit;i++){
                 ruters_aviable.push_back(i);
             }
 
             break;
         }
         else if (obtion == char(66)){
+
+            bool condition = false;
+            int count = 0;
+            int regist = 0;
+            int cunt;
+
+            string File;
+            string linea;
+            List_str::iterator iter;
+
+            List_str ruters_name; // Guardamos los enrutadores.
+            List_str ruters_nums; // Guardamos sus costo a cada enrutador respectivamente.
+
+            cin.ignore();
+            cout << "Ingrese el nomre del archivo de texto: ";
+            getline(cin, File);
+
+            // Abrimos el archivo de texto que procedemos a codificar.
+
+            ifstream ReadFile;
+            ReadFile.open(File);
+
+            if(ReadFile.fail()){
+                cout << "Error al abrir el archivo de lectura de las palabras" << endl;
+                return -1;
+            }
+
+            while (!ReadFile.eof()){
+
+                getline(ReadFile, linea);
+
+                if (linea == "ENRUTADORES:"){
+
+                    condition = true;
+                    getline(ReadFile, linea);
+                    linea = linea+" ";
+                    for (unsigned int i=0;i<linea.size();i++){
+                        if (linea[i] == char(32)){
+                            if (word.size() != 0){
+                                ruters_name.push_back(word);
+                            }
+                            word = "";
+                        }
+                        if (linea[i] != char(32)) word = word+linea[i];
+                    }
+                    iter = ruters_name.begin();
+                    while(iter != ruters_name.end()){
+                        enrutadres[count].setName(*iter);
+                        iter++;
+                        count++;
+                    }
+                    for (int i=0;i<count;i++){
+                        ruters_in_use.push_back(i);
+                    }
+                    for (int i=count;i<limit;i++){
+                        ruters_aviable.push_back(i);
+                    }
+                }
+
+                else if ((condition == true)&&(linea.size()>0)){
+
+                    ruters_nums.clear();
+                    linea = linea+" ";
+                    for (unsigned int i=0;i<linea.size();i++){
+                        if (linea[i] == char(32)){
+                            if (word.size() != 0){
+                                ruters_nums.push_back(word);
+                            }
+                            word = "";
+                        }
+                        if (linea[i] != char(32)) word = word+linea[i];
+                    }
+                    iter = ruters_nums.begin();
+                    iter++;
+                    cunt = 0;
+
+                    while(iter != ruters_nums.end()){
+                        if ((enrutadres[regist].getName() != enrutadres[cunt].getName())&&(*iter != "-")){
+                            enrutadres[regist].setTable_cost(enrutadres[cunt],string_to_int(*iter));
+                        }
+                        iter++;
+                        cunt++;
+                    }
+                    regist++;
+                }
+            }
+
+            for (int i=0;i<count;i++){
+                cout << "Desde "<< enrutadres[i].getName() << " a: "<< endl;
+                Print(enrutadres[i].getTable_cost());
+            }
+
+            ReadFile.close();
+
+            // Actualizamos la lista de los enrutadores en uso.
+
+            list_ruter_in_use.clear();
+            Iter_ruters = ruters_in_use.begin();
+            while(Iter_ruters != ruters_in_use.end()){
+                list_ruter_in_use.push_back(enrutadres[*Iter_ruters]);
+                Iter_ruters ++;
+            }
+
+            break;
 
         }
         else if (obtion == char(67)){
@@ -234,11 +345,36 @@ int main(){
     }
 }
 
+int elevate(int num, int respect)
+{
+    if (respect == 0){
+        num = 1;
+    }
+    else
+    {
+        for (int i=1;i<respect;i++){
+            num =num*num;
+        }
+    }
+    return num;
+}
+
+int string_to_int (string num){
+    char digit;
+    int digit_int;
+    int complete=0;
+    for (unsigned int i=0;i<num.size();i++){
+        digit = num[i];
+        digit_int = (int(digit)-48)*(elevate(10, int(num.size())-1-i));
+        complete=complete+digit_int;
+    }
+    return complete;
+}
+
 bool SearchDicc(string word, Dic_str_To_int dicc){
     Dic_str_To_int::iterator iter = dicc.find(word); // Buscamos la palabra word en el diccionario.
     if (iter != dicc.end()) return true;
     else return false;
-
 }
 
 void Conection_cost_ruters(enrutador *ruter1, enrutador *ruter2, int cost){
@@ -369,6 +505,5 @@ void Create_Table_cost_and_direction_ruter(enrutador *ruter, List_ruter ruters){
     }
     ruter->setTable_cost_ruter(Table_cost_ruter_official); // Guardamos la tabla de enrutamiento en el enrutador.
     ruter->setTable_direction_ruter(Table_direction_ruter_official); // Guardamos las direcciones de la tabla de enrutamiento.
-
 }
 
