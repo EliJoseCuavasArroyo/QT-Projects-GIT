@@ -1,7 +1,8 @@
 
 ENRUTADORES:
-          ruterA   ruterB    ruterC   ruterD
-ruterA       0         4        10        -
-ruterB       4         0        -         1
-ruterC       10        -        0         2
-ruterD       -         1        2         0
+          ruterA   ruterB    ruterC   ruterD    ruterE
+ruterA       0         4        10        -       1
+ruterB       4         0        -         1       1
+ruterC       10        -        0         2       1
+ruterD       -         1        2         0       1
+ruterE       1         1        1         1       0 
