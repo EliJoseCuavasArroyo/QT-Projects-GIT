@@ -50,7 +50,7 @@ int main()
 
     */
 
-    /* Para el Ejemplo 2
+    // Para el Ejemplo 2
 
     particula particle1;
     particle1.setMasa(50000);
@@ -93,7 +93,7 @@ int main()
     Particles.push_back(particle4);
     Particles.push_back(particle5);
 
-    */
+
 
     string name_file;
     cout << "Ingrese el nombre del archivo de texto: " << endl;
