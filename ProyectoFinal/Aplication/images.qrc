@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>archer.png</file>
+        <file>archer5.png</file>
+        <file>archerfemale.png</file>
+        <file>Avaricia.png</file>
+        <file>berserker.png</file>
+        <file>Espada0.png</file>
+        <file>Espada1.png</file>
+        <file>Espada3.png</file>
+        <file>Fondo1.jpg</file>
+        <file>Fondo2.jpg</file>
+        <file>Fondo3.jpg</file>
+        <file>Fondo4.png</file>
+        <file>Fondo5.png</file>
+        <file>Fondo6.png</file>
+        <file>Kanshou_y_Bakuya_Overedge.png</file>
+        <file>KanshouYBakuya.png</file>
+        <file>weapon.h</file>
+        <file>orgullo.png</file>
+    </qresource>
+</RCC>

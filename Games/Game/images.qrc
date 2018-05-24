@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>archer.png</file>
+        <file>archer5.png</file>
+        <file>archerfemale.png</file>
+        <file>Fondo1.jpg</file>
+        <file>Fondo2.jpg</file>
+        <file>orgullo.png</file>
+        <file>KanshouYBakuya.png</file>
+        <file>Kanshou_y_Bakuya_Overedge.png</file>
+        <file>Avaricia.png</file>
+        <file>berserker.png</file>
+        <file>Espada0.png</file>
+        <file>orgullo2.png</file>
+        <file>Espada1.png</file>
+        <file>Espada3.png</file>
+        <file>Fondo2_opt.jpg</file>
+        <file>Fondo1Prueba.jpg</file>
+    </qresource>
+</RCC>
