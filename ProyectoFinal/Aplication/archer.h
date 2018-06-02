@@ -12,15 +12,17 @@ private:
 
     // Aqui ponemos los atributos de archer como la vida, el nombre, ataque, si esta vivo o no.
 
-    /*
 
     bool life = true;
+
     int HP = 2000;
+    int MP = 500;
 
     int armaP = 0;
     int armaS = 1;
+    int armaKi;
+    int Heal;
 
-    */
 
 public:
     Archer();
@@ -29,6 +31,21 @@ public:
     void mover();
 
 // Falta poner las funciones de archer que afectan sus atributos directos.
+
+    bool getLife() const;
+    void setLife();
+
+    int getHP();
+    int getMP() const;
+
+    void cure(); // Cura usando Ki
+
+    int getArmaP() const;
+    int getArmaS();
+    int getArmaKi();
+
+    void TakeDamage(int damage);
+
 
 };
 

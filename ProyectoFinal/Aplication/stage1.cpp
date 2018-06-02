@@ -64,10 +64,21 @@ Stage1::Stage1(QWidget *parent) :
 
     espada->setCondition(0);
     scene->addItem(espada);
-    espada->setPos(500, 500);
+    espada->setPos(1000, 1000);
 
     setTurno(true);
     setAnimation(false);
+
+    // HP y MP
+
+//   cout << "HPvalue: " << valueHP << endl;
+//    cout << "HP: " << heroe->getHP() << end;
+
+//    cout << "MPvalue: " << valueMP << endl;
+//    cout << "MP: " << heroe->getMP() << end;
+
+    ui->progressBar->setValue(valueHP);
+    ui->progressBar_2->setValue(valueMP);
 
     timer=new QTimer();
 
@@ -86,6 +97,12 @@ void Stage1::BattleRoyal()
     heroe->mover();
     ban->mover();
 
+    // cout << "HPvalue: " << valueHP << endl;
+    // cout << "HP: " << heroe->getHP() << end;
+    // ui->label->setText(QString::number(heroe->getHP()));
+    //    cout << "MPvalue: " << valueMP << endl;
+    //    cout << "MP: " << heroe->getMP() << end;
+
     if (animation == true){
         timer->start(50);
         espada->movimiento();
@@ -96,7 +113,7 @@ void Stage1::BattleRoyal()
         timer->start(100);
     }
 
-    if ((turno == false)&&(animation == false)){
+    if ((getTurno() == false)&&(getAnimation() == false)){
         espada->setCondition(2);
         espada->setPos(350, 500);
         setAnimation(true);
@@ -105,6 +122,7 @@ void Stage1::BattleRoyal()
 
     if ((espada->collidesWithItem(heroe))&&(espada->getCondition() == 2)){
         setAnimation(false);
+        heroe->TakeDamage(300);
         espada->setPos(1000, 1000);
     }
     else if ((espada->collidesWithItem(ban))&&(((espada->getCondition() == 0))||(espada->getCondition() == 1))){
@@ -112,13 +130,35 @@ void Stage1::BattleRoyal()
         espada->setPos(1000, 1000);
     }
 
+    // Actualizacion de las barras de HP y MP
+
+    // int valor;
+    // valor = (((heroe->getHP())*100)/2000);
+    // cout << valor << endl;
+
+    if (valueHP > (((heroe->getHP())*100)/2000)){
+        valueHP = valueHP-1;
+    }
+    else if (valueHP < (((heroe->getHP())*100)/2000)){
+        valueHP = valueHP+1;
+    }
+
+    if (valueMP > (((heroe->getMP())*100)/500)){
+        valueMP = valueMP-1;
+    }
+    else if (valueMP < (((heroe->getMP())*100)/500)){
+        valueMP = valueMP+1;
+    }
+
+    ui->progressBar->setValue(valueHP);
+    ui->progressBar_2->setValue(valueMP);
 
 }
 
 void Stage1::on_pushButton_clicked() // Kanshou y bakuya
 {
     if ((turno == true)&&(animation == false)){
-        espada->setCondition(0);
+        espada->setCondition((heroe->getArmaP()));
         espada->setPos(160, 150);
         setAnimation(true);
         setTurno(false);
@@ -129,7 +169,7 @@ void Stage1::on_pushButton_clicked() // Kanshou y bakuya
 void Stage1::on_pushButton_2_clicked() // Kanshou y bakuya overgede
 {
     if ((turno == true)&&(animation == false)){
-        espada->setCondition(1);
+        espada->setCondition((heroe->getArmaS()));
         espada->setPos(160, 150);
         setAnimation(true);
         setTurno(false);
@@ -141,10 +181,18 @@ void Stage1::on_pushButton_3_clicked() // Ki
 
 }
 
-void Stage1::on_pushButton_4_clicked() // Pasar turno
+void Stage1::on_pushButton_4_clicked() // Heal
+{
+    if ((turno == true)&&(animation == false)&&(heroe->getMP() > 0)){
+        heroe->cure();
+        setTurno(false);
+    }
+}
+
+
+void Stage1::on_pushButton_5_clicked() // Pass
 {
     if ((turno == true)&&(animation == false)){
         setTurno(false);
     }
 }
-

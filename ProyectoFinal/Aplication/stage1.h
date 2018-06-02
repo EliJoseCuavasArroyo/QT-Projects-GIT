@@ -26,6 +26,9 @@ private:
     bool turno; // Turno del Heroe (1) ; Turno del Pecado (0)
     bool animation; // Se esta animando una accion (1) ; De lo contrario (0)
 
+    int valueHP = 100;
+    int valueMP = 100;
+
 signals:
     void aviso(int);
 
@@ -62,6 +65,8 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
 
 private:
     Ui::Stage1 *ui;

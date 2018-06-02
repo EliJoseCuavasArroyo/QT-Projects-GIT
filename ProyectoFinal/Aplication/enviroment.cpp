@@ -62,9 +62,9 @@ Enviroment::~Enviroment()
 
 void Enviroment::animacion()
 {
-    heroe->mover();
+    //heroe->mover();
     //ban->mover();
-    orgullo->mover();
+    //orgullo->mover();
     //ira->mover();
 
     espada->movimiento();

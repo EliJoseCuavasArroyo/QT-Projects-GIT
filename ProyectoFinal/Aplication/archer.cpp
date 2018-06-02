@@ -1,13 +1,14 @@
 #include "archer.h"
 
+
 Archer::Archer()
 {
-
+    
 }
 
 QRectF Archer::boundingRect() const
 {
-     return QRectF(0,0,150,150);
+    return QRectF(0,0,150,150);
 }
 
 void Archer::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -37,3 +38,68 @@ void Archer::mover()
          movement = 0;
     }
 }
+
+// Atributos de Archer
+
+bool Archer::getLife() const
+{
+    return life;
+}
+
+void Archer::setLife()
+{
+    if (HP > 0)
+    {
+        life = true;
+    }
+    else
+    {
+        life = false;
+    }
+}
+
+int Archer::getHP()
+{
+    return HP;
+}
+
+int Archer::getMP() const
+{
+    return MP;
+}
+
+void Archer::cure()
+{
+    int curing = 0;
+    while (HP < 2000){
+        HP = HP+1;
+        curing = curing+1;
+        if (curing == 500) break;
+    }
+
+    MP = MP-80;
+}
+
+int Archer::getArmaP() const
+{
+    return armaP;
+}
+
+int Archer::getArmaS()
+{
+    MP = MP-120;
+    return armaS;
+}
+
+void Archer::TakeDamage(int damage)
+{
+    HP = HP - damage;
+}
+
+
+int Archer::getArmaKi()
+{
+    MP = MP-150;
+    return armaKi;
+}
+
