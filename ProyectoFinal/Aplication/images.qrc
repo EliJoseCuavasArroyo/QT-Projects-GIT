@@ -18,5 +18,17 @@
         <file>KanshouYBakuya.png</file>
         <file>weapon.h</file>
         <file>orgullo.png</file>
+        <file>Ki_azul.png</file>
+        <file>Ki_ira.png</file>
+        <file>Ki_lujuria.png</file>
+        <file>Ki_orgullo.png</file>
+        <file>Ki_prota.png</file>
+        <file>LanzaDorada.png</file>
+        <file>Lujuria.png</file>
+        <file>Berserker_espada0.jpg</file>
+        <file>Berserker_espada1.png</file>
+        <file>ArmaDorada.png</file>
+        <file>flecha_guerra.png</file>
+        <file>FlechaDorada.png</file>
     </qresource>
 </RCC>

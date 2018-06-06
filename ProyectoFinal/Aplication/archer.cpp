@@ -41,26 +41,14 @@ void Archer::mover()
 
 // Atributos de Archer
 
-bool Archer::getLife() const
-{
-    return life;
-}
-
-void Archer::setLife()
-{
-    if (HP > 0)
-    {
-        life = true;
-    }
-    else
-    {
-        life = false;
-    }
-}
-
 int Archer::getHP()
 {
-    return HP;
+    if (HP > 0){
+        return HP;
+    }
+    else{
+        return 0;
+    }
 }
 
 int Archer::getMP() const
@@ -77,7 +65,7 @@ void Archer::cure()
         if (curing == 500) break;
     }
 
-    MP = MP-80;
+    MP = MP-50;
 }
 
 int Archer::getArmaP() const
@@ -87,7 +75,7 @@ int Archer::getArmaP() const
 
 int Archer::getArmaS()
 {
-    MP = MP-120;
+    MP = MP-80;
     return armaS;
 }
 
@@ -95,7 +83,6 @@ void Archer::TakeDamage(int damage)
 {
     HP = HP - damage;
 }
-
 
 int Archer::getArmaKi()
 {

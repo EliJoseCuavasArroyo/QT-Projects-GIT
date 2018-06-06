@@ -8,6 +8,8 @@
 #include <QGraphicsLineItem>
 #include <QKeyEvent>
 #include <QTimer>
+#include <string>
+#include <fstream>
 #include "archer.h"
 #include "sins.h"
 #include "enviroment.h"

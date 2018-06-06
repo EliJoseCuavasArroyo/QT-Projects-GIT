@@ -15,6 +15,7 @@ private:
 
     int condition;
     float velocity = 10;
+    int damage;
     // Flata poner los atributos directos del arma.
 
 public:
@@ -27,6 +28,8 @@ public:
     int getCondition();
 
     // Falta poner los atributos de Weapon que afectan a sus atributos propios.
+    int getDamage();
+    void setDamage();
 };
 
 #endif // WEAPON_H

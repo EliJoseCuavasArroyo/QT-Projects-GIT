@@ -95,9 +95,16 @@ void Enviroment::animacion()
     }
 }
 
-
 void Enviroment::on_pushButton_clicked()
 {
+
+    char contenido_archivo = '1';
+    string nombre_archivo = "playing.txt";
+
+    ofstream creacion_archivo(nombre_archivo.c_str());
+    creacion_archivo << contenido_archivo << endl;
+    creacion_archivo.close();
+
     timer->stop();
     this->close();
 
@@ -107,17 +114,50 @@ void Enviroment::on_pushButton_clicked()
 
 void Enviroment::on_pushButton_2_clicked()
 {
-    // ui->label->setText("fsa");
+    char contenido_archivo = '2';
+    string nombre_archivo = "playing.txt";
+
+    ofstream creacion_archivo(nombre_archivo.c_str());
+    creacion_archivo << contenido_archivo << endl;
+    creacion_archivo.close();
+
+    timer->stop();
+    this->close();
+
+    Stage1 escena;
+    escena.exec();
 }
 
 void Enviroment::on_pushButton_3_clicked()
 {
+    char contenido_archivo = '3';
+    string nombre_archivo = "playing.txt";
 
+    ofstream creacion_archivo(nombre_archivo.c_str());
+    creacion_archivo << contenido_archivo << endl;
+    creacion_archivo.close();
+
+    timer->stop();
+    this->close();
+
+    Stage1 escena;
+    escena.exec();
 }
 
 void Enviroment::on_pushButton_4_clicked()
 {
+    char contenido_archivo = '4';
+    string nombre_archivo = "playing.txt";
 
+    ofstream creacion_archivo(nombre_archivo.c_str());
+    creacion_archivo << contenido_archivo << endl;
+    creacion_archivo.close();
+
+    timer->stop();
+    this->close();
+
+    Stage1 escena;
+    escena.exec();
 }
 
 void Enviroment::on_pushButton_5_clicked()

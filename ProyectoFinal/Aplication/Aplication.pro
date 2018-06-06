@@ -30,7 +30,8 @@ SOURCES += \
     weapon.cpp \
     sins.cpp \
     enviroment.cpp \
-    stage1.cpp
+    stage1.cpp \
+    ki.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +39,8 @@ HEADERS += \
     weapon.h \
     sins.h \
     enviroment.h \
-    stage1.h
+    stage1.h \
+    ki.h
 
 FORMS += \
         mainwindow.ui \
