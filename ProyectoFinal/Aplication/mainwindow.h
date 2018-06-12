@@ -12,6 +12,7 @@
 #include "sins.h"
 #include "enviroment.h"
 #include "weapon.h"
+#include "twoplayers.h"
 
 namespace Ui {
 class MainWindow;
@@ -41,6 +42,8 @@ public slots:
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

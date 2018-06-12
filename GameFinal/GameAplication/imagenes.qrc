@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>archer.png</file>
+        <file>Arondight.png</file>
+        <file>assasins.png</file>
+        <file>assasinsword.png</file>
+        <file>BerserkerV.png</file>
+        <file>EspadasDoradas.png</file>
+        <file>Fondo2.jpg</file>
+        <file>Fondo3.jpg</file>
+        <file>Fondo4.png</file>
+        <file>isthar.png</file>
+        <file>Kanshou_y_Bakuya_Overedge.png</file>
+        <file>KanshouYBakuya.png</file>
+        <file>Ki_azul.png</file>
+        <file>Ki_ira.png</file>
+        <file>Ki_lujuria.png</file>
+        <file>Ki_orgullo.png</file>
+        <file>Ki_prota.png</file>
+        <file>knife.png</file>
+        <file>LanzaDorada.png</file>
+        <file>Lujuria.png</file>
+        <file>orgullo.png</file>
+        <file>rayoDeKi.png</file>
+        <file>swordberserker.png</file>
+        <file>EmiyaArcher_NewSprite2.png</file>
+        <file>Blue_excalibur.png</file>
+        <file>EmiyaArcher_NewSprite3.png</file>
+        <file>Excalibur.png</file>
+        <file>Mhxsprite1.png</file>
+        <file>Mhxsprite3.png</file>
+        <file>yellow_excalibur.png</file>
+    </qresource>
+</RCC>

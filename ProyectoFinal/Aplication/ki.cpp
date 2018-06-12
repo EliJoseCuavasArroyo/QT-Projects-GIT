@@ -7,7 +7,13 @@ Ki::Ki()
 
 QRectF Ki::boundingRect() const
 {
-    return QRectF(0,0,140,120);
+    if (condition == 5){
+        return QRectF(20,30,120,50);
+    }
+    else{
+        return QRectF(0,0,140,120);
+    }
+
 }
 
 void Ki::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -34,6 +40,10 @@ void Ki::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidge
         pixmap.load(":/Ki_lujuria.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
+    if (condition == 5){
+        pixmap.load(":/Blue_excalibur.png");
+        painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
+    }
 }
 
 void Ki::movimiento()
@@ -57,6 +67,9 @@ void Ki::movimiento()
     if (condition == 4){
         setPos(x() - v_x, y() + (v_y*0.8) + ((-9.8*0.01)/2));
         v_y += (-9.8*0.1);
+    }
+    if (condition == 5){
+        setPos(x()-10,y());
     }
 }
 
@@ -99,5 +112,9 @@ void Ki::setDamage()
     if (condition == 4){
         // pixmap.load(":/Ki_lujuria.png");
         damage = 550;
+    }
+    if (condition == 5){
+        // pixmap.load(":/Blue_excalibur.png");
+        damage = 500;
     }
 }

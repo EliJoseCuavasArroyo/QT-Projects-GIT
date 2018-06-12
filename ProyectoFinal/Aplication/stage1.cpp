@@ -5,11 +5,6 @@
 
 using namespace std;
 
-bool Stage1::getTurno() const
-{
-    return turno;
-}
-
 void Stage1::setTurno(bool value)
 {
     turno = value;
@@ -101,9 +96,14 @@ Stage1::Stage1(QWidget *parent) :
 
     ban->setArmasAndHp();
     scene->addItem(ban);
+
     if (c == '1')
     {
         ban->setPos(600, 70);
+    }
+    else if (c == '3')
+    {
+        ban->setPos(600, 65);
     }
     else
     {
@@ -153,8 +153,7 @@ void Stage1::BattleRoyal()
 
     if (animation == true)
     {
-        timer->start(50);
-
+        timer->start(40);
         if (animationKi == true){
             Final_Ki->movimiento();
         }
@@ -164,12 +163,12 @@ void Stage1::BattleRoyal()
     }
     else
     {
-        timer->start(100);
+        timer->start(70);
     }
 
     // Turno del pecado capital
 
-    if ((getTurno() == false)&&(animation == false)){
+    if ((turno == false)&&(animation == false)){
         int num;
         if ((ban->getMP()) >= 250){
             num = rand()%(3);

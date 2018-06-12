@@ -34,15 +34,15 @@ Enviroment::Enviroment(QWidget *parent) :
 
     orgullo->setCondition(2);
     scene->addItem(orgullo);
-    orgullo->setPos(500, 100);
+    orgullo->setPos(450, 100);
 
     ban->setCondition(1);
     scene->addItem(ban);
-    ban->setPos(600, 100);
+    ban->setPos(550, 100);
 
     ira->setCondition(3);
     scene->addItem(ira);
-    ira->setPos(700, 100);
+    ira->setPos(650, 65);
 
     espada->setCondition(0);
     scene->addItem(espada);
@@ -62,10 +62,10 @@ Enviroment::~Enviroment()
 
 void Enviroment::animacion()
 {
-    //heroe->mover();
-    //ban->mover();
-    //orgullo->mover();
-    //ira->mover();
+    // heroe->mover();
+    // ban->mover();
+    // orgullo->mover();
+    // ira->mover();
 
     espada->movimiento();
 

@@ -59,7 +59,6 @@ public:
     Weapon *espada = new Weapon [1];
     Ki *Final_Ki = new Ki [1];
 
-    bool getTurno() const;
     void setTurno(bool value);
 
     void setAnimation(bool value);

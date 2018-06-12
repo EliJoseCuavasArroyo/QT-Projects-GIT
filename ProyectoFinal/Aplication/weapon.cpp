@@ -11,22 +11,31 @@ QRectF Weapon::boundingRect() const
         return QRectF(0,0,120,50);
     }
     else if (condition == 2){
-        return QRectF(0,0,100,100);
+        return QRectF(20,0,100,100);
     }
     else if (condition == 3){
         return QRectF(0,0,120,120);
     }
     else if (condition == 4){
-        return QRectF(0,0,100,100);
+        return QRectF(0,0,80,40);
     }
     else if (condition == 5){
-        return QRectF(0,0,100,30);
+        return QRectF(0,0,100,80);
     }
     else if (condition == 7){
-        return QRectF(0,0,100,100);
+        return QRectF(0,0,200,150);
+    }
+    else if (condition == 8){
+        return QRectF(50,0,150,150);
     }
     else if (condition == 9){
         return QRectF(0,0,120,120);
+    }
+    else if (condition == 10){
+        return QRectF(20,30,120,50);
+    }
+    else if (condition == 11){
+       return QRectF(20,30,120,50);
     }
     else{
         return QRectF(0,0,80,80);
@@ -46,35 +55,43 @@ void Weapon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 2){
-        pixmap.load(":/Espada0.png");
+        pixmap.load(":/assasinsword.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 3){
-        pixmap.load(":/Espada1.png");
+        pixmap.load(":/swordberserker.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 4){
-        pixmap.load(":/Espada3.png");
+        pixmap.load(":/knife.png"); //
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 5){
-        pixmap.load(":/ArmaDorada.png");
+        pixmap.load(":/EspadasDoradas.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 6){
-        pixmap.load(":/Berserker_espada1.png");
+        pixmap.load(":/Arondight.png"); //
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 7){
-        pixmap.load(":/flecha_guerra.png");
+        pixmap.load(":/rayoDeKi.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 8){
-        pixmap.load(":/FlechaDorada.png");
+        pixmap.load(":/isthar.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 9){
         pixmap.load(":/LanzaDorada.png");
+        painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
+    }
+    if (condition == 10){
+        pixmap.load(":/Excalibur.png");
+        painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
+    }
+    if (condition == 11){
+        pixmap.load(":/yellow_excalibur.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
 }
@@ -110,6 +127,12 @@ void Weapon::movimiento()
     }
     if (condition == 9){
         setPos(x()-velocity,y()-velocity);
+    }
+    if (condition == 10){
+       setPos(x()-velocity,y());
+    }
+    if (condition == 11){
+        setPos(x()-velocity,y());
     }
 
 }
@@ -161,6 +184,15 @@ void Weapon::setDamage()
         // pixmap.load(":/LanzaDorada.png");
         damage = 80;
     }
+    if (condition == 10){
+        // pixmap.load(":/Excalibur.png");
+        damage = 80;
+    }
+    if (condition == 11){
+       // pixmap.load(":/yellow_excalibur.png");
+        damage = 80;
+    }
+
 }
 
 void Weapon::setCondition(int number)

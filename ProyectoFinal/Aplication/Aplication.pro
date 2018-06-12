@@ -31,7 +31,8 @@ SOURCES += \
     sins.cpp \
     enviroment.cpp \
     stage1.cpp \
-    ki.cpp
+    ki.cpp \
+    twoplayers.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,12 +41,14 @@ HEADERS += \
     sins.h \
     enviroment.h \
     stage1.h \
-    ki.h
+    ki.h \
+    twoplayers.h
 
 FORMS += \
         mainwindow.ui \
     enviroment.ui \
-    stage1.ui
+    stage1.ui \
+    twoplayers.ui
 
 RESOURCES += \
     images.qrc

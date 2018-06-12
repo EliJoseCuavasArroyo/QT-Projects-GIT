@@ -16,7 +16,6 @@ void Archer::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     QPixmap pixmap;
     pixmap.load(":/archer.png");
     painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
-
 }
 
 void Archer::mover()

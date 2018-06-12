@@ -30,5 +30,25 @@
         <file>ArmaDorada.png</file>
         <file>flecha_guerra.png</file>
         <file>FlechaDorada.png</file>
+        <file>Arondight.png</file>
+        <file>assasins.png</file>
+        <file>BerserkerV.png</file>
+        <file>knife.png</file>
+        <file>assasinsword.png</file>
+        <file>EspadasDoradas.png</file>
+        <file>lanza.png</file>
+        <file>swordberserker.png</file>
+        <file>Kirayo.png</file>
+        <file>rayoDeKi.png</file>
+        <file>KiLujuriaV.png</file>
+        <file>isthar.png</file>
+        <file>istharV.png</file>
+        <file>Blue_excalibur.png</file>
+        <file>EmiyaArcher_NewSprite2.png</file>
+        <file>EmiyaArcher_NewSprite3.png</file>
+        <file>Excalibur.png</file>
+        <file>yellow_excalibur.png</file>
+        <file>Mhxsprite1.png</file>
+        <file>Mhxsprite3.png</file>
     </qresource>
 </RCC>

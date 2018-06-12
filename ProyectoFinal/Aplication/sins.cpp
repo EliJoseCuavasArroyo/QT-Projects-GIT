@@ -10,6 +10,25 @@ QRectF Sins::boundingRect() const
     if (condition == 4){
         return QRectF(0,0,200,250);
     }
+    else if (condition == 3){
+        return QRectF(0,0,180,230);
+    }
+    else if (condition == 5){
+        // pixmap.load(":/EmiyaArcher_NewSprite2.png");
+        return QRectF(40,0,120,180);
+    }
+    else if (condition == 6){
+        // pixmap.load(":/EmiyaArcher_NewSprite3.png");
+        return QRectF(0,0,180,180);
+    }
+    else if (condition == 7){
+        // pixmap.load(":/Mhxsprite1.png");
+        return QRectF(0,0,170,170);
+    }
+    else if (condition == 8){
+        // pixmap.load(":/Mhxsprite3.png");
+         return QRectF(0,0,200,170);
+    }
     else{
         return QRectF(0,0,100,150);
     }
@@ -21,7 +40,7 @@ void Sins::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     QPixmap pixmap;
 
     if (condition == 1){
-        pixmap.load(":/Avaricia.png");
+        pixmap.load(":/assasins.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 2){
@@ -29,11 +48,27 @@ void Sins::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 3){
-        pixmap.load(":/berserker.png");
+        pixmap.load(":/BerserkerV.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
     if (condition == 4){
         pixmap.load(":/Lujuria.png");
+        painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
+    }
+    if (condition == 5){
+        pixmap.load(":/EmiyaArcher_NewSprite2.png");
+        painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
+    }
+    if (condition == 6){
+        pixmap.load(":/EmiyaArcher_NewSprite3.png");
+        painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
+    }
+    if (condition == 7){
+        pixmap.load(":/Mhxsprite1.png");
+        painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
+    }
+    if (condition == 8){
+        pixmap.load(":/Mhxsprite3.png");
         painter->drawPixmap(boundingRect(),pixmap,pixmap.rect());
     }
 
@@ -133,6 +168,48 @@ void Sins::setArmasAndHp()
         armaP = 7;
         armaS = 8;
         armaKi = 4;
+
+    }
+    if (condition == 5){
+        // pixmap.load(":/EmiyaArcher_NewSprite2.png");
+
+        HP = 2000;
+
+        armaP = 0;
+        armaS = 1;
+        armaKi = 0;
+
+    }
+    if (condition == 6){
+        // pixmap.load(":/EmiyaArcher_NewSprite3.png");
+
+        HP = 4000;
+        MP = 1000;
+
+        armaP = 0;
+        armaS = 1;
+        armaKi = 0;
+
+    }
+    if (condition == 7){
+        // pixmap.load(":/Mhxsprite1.png");
+
+        HP = 2000;
+
+        armaP = 10;
+        armaS = 11;
+        armaKi = 5;
+
+    }
+    if (condition == 8){
+        // pixmap.load(":/Mhxsprite3.png");
+
+        HP = 4000;
+        MP = 1000;
+
+        armaP = 10;
+        armaS = 11;
+        armaKi = 5;
 
     }
 }
